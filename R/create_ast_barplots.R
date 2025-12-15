@@ -7,6 +7,8 @@
 #' @param masterdata A data frame containing the AST data. It must include the columns
 #'   'ghru_id', 'Isolate_type', and the specified antimicrobial columns.
 #' @param output_dir A character string specifying the directory where the plot will be saved.
+#' @param legend_size A numeric variable specifying the size of the axis text.
+#' @param legend_size A number specifying the size of the legend. 
 #' @importFrom dplyr %>% count pull filter
 #' @importFrom tidyr pivot_longer
 #' @importFrom ggplot2 ggplot aes geom_bar scale_y_continuous scale_fill_manual labs facet_wrap theme element_text
@@ -20,14 +22,16 @@
 #'
 #' @examples
 #' # Assuming 'masterdata' is a data frame loaded in the environment
-#' # create_ast_barplots(masterdata = my_data, output_dir = "plots")
-create_ast_barplots <- function(masterdata, output_dir) {
+#' # create_ast_barplots(masterdata = my_data, output_dir = "plots", legend_size= 20)
+
+create_ast_barplots <- function(masterdata, output_dir, legend_size) {
   # 1. Subset relevant AST columns
+  
   AST_data <- masterdata[c(
     "ghru_id", "Isolate_type", "AMK", "AMP", "FEP", "CRO", "CIP",
     "COL", "GEN", "IPM", "MEM", "TZP", "SXT"
   )]
-
+  
   # 2. Pivot from wide to long format
   AST_data_long <- AST_data %>%
     pivot_longer(
@@ -35,17 +39,17 @@ create_ast_barplots <- function(masterdata, output_dir) {
       names_to = "Antimicrobial",
       values_to = "Interpretation"
     )
-
+  
   # 3. Set factor levels for interpretation
   AST_data_long$Interpretation <- factor(
     AST_data_long$Interpretation,
     levels = c("S", "I", "R")
   )
-
+  
   # 4. Plot and save to PNG
   plot_path <- file.path(output_dir, "ast_barplots_clinical_facet.png")
   png(filename = plot_path, height = 12, width = 12, res = 350, units = "in")
-
+  
   print(
     ggplot(AST_data_long, aes(x = Antimicrobial, fill = Interpretation)) +
       geom_bar(position = "fill") +
@@ -56,9 +60,11 @@ create_ast_barplots <- function(masterdata, output_dir) {
         "S" = "#8CB369"
       )) +
       labs(y = "Proportion") +
+      theme(text = element_text(size = legend_size))+
       facet_wrap(~Isolate_type, ncol = 1)
   )
-
+  
   dev.off()
   message("✅ AST barplot saved to: ", plot_path)
-}
+  
+  }
