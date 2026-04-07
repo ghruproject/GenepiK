@@ -1,3 +1,13 @@
+
+rm(list = ls())
+library(GenepiK)
+library(forcats)
+
+file_path<- "/Users/emmanuellek/Documents/GHRU2/Kleb Survey/rapid_report/package_new_code/new_dummy_middle_earth.csv"
+output_dir<- "/Users/emmanuellek/Documents/GHRU2/Kleb Survey/rapid_report/package_new_code/figures"
+import_data(file_path, output_dir)
+
+
 #' Check Columns and Read CSV Data
 #'
 #' This function reads a CSV file, checks if its column names match a predefined set of expected columns,
@@ -17,7 +27,7 @@
 #' @examples
 #' # Assuming 'data.csv' exists with the required columns
 #' # and the appropriate packages (readr, dplyr, stringr) are loaded.
-#' # check_columns_and_read(file_path = "data.csv", output_dir = "my_output_folder")
+#' # import_data(file_path = "data.csv", output_dir = "my_output_folder")
 #'
 import_data <- function(file_path, output_dir) {
   # 1. Ensure the output directory exists
@@ -33,11 +43,11 @@ import_data <- function(file_path, output_dir) {
   
   # 3. Define expected column names (hardcoded)
   expected_columns <- c(
-    "ghru_id", "Sample collection date", "Specimen type", "Isolate type", "AMK", "AMP", "FEP", "CRO", "CIP", "COL", "GEN", 
+    "ghru_id","Laboratory Name", "Sample collection date", "Specimen type", "Isolate type", "AMK", "AMP", "FEP", "CRO", "CIP", "COL", "GEN", 
     "IPM", "MEM", "TZP", "SXT", "species", "ST", "Yersiniabactin", "Colibactin", "Aerobactin", "Salmochelin", "RmpADC", 
     "virulence_score", "rmpA2", "AGly_acquired", "Col_acquired", "Fcyn_acquired", "Flq_acquired", "Gly_acquired", "MLS_acquired", 
     "Phe_acquired", "Rif_acquired", "Sul_acquired", "Tet_acquired", "Tgc_acquired", "Tmt_acquired", "Bla_acquired",
-    "Bla_inhR_acquired", "Bla_ESBL_acquired", "Bla_ESBL_inhR_acquired", "Bla_Carb_acquired", "Bla_chr", "SHV_mutations", 
+    "Bla_inhR_acquired", "Bla_ESBL_acqu,ired", "Bla_ESBL_inhR_acquired", "Bla_Carb_acquired", "Bla_chr", "SHV_mutations", 
     "Omp_mutations", "Col_mutations", "Flq_mutations", "resistance_score", "K_locus", "O_locus")
   
   # 3. Read the CSV data
@@ -66,8 +76,8 @@ import_data <- function(file_path, output_dir) {
   
   # 6. Assign data to global environment
   assign("masterdata", data, envir = .GlobalEnv)
-
+  
   #7. Set output directory message
   message("📁 Output directory set to: ", output_dir)
-
+  
 }

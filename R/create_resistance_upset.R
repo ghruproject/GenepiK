@@ -25,50 +25,52 @@
 #' # create_virulence_upset_plots(data = my_data, output_dir = "plots")
 create_resistance_upset_plots <- function(data, output_dir) {
   # Define columns of interest
-  resistance_classes <- c("Bla_acquired", "Bla_inhR_acquired", "Bla_ESBL_acquired", "Bla_ESBL_inhR_acquired", "Bla_Carb_acquired", "Bla_chr", "SHV_mutations", "Omp_mutations")
+resistance_classes <- c("Bla_acquired", "Bla_inhR_acquired", "Bla_ESBL_acquired", "Bla_ESBL_inhR_acquired", "Bla_Carb_acquired", "Bla_chr", "SHV_mutations", "Omp_mutations")
 
-  # Convert "-" to FALSE, and anything else to TRUE
-  data_converted <- data %>%
-    mutate(across(all_of(resistance_classes), ~ . != "-"))
+# Convert "-" to FALSE, and anything else to TRUE
+data_converted <- masterdata %>%
+  mutate(across(all_of(resistance_classes), ~ . != "-"))
 
-  # Get unique Isolate Types
-  isolate_types <- unique(data_converted$Isolate_type)
+# Get unique Isolate Types
+isolate_types <- unique(data_converted$Isolate_type)
 
-  # Ensure the output directory exists
-  if (!dir.exists(output_dir)) {
-    dir.create(output_dir, recursive = TRUE)
-  }
+# Ensure the output directory exists
+if (!dir.exists(output_dir)) {
+  dir.create(output_dir, recursive = TRUE)
+}
 
-  # Create a plot for each Isolate Type
-  for (type in isolate_types) {
-    # Subset the data for the current Isolate Type
-    subset_data <- data_converted %>%
-      filter(Isolate_type == type)
-
-    # Create the plot
-    upset_plot <- upset(
-      subset_data,
-      intersect = resistance_classes,
-      name = "Resistance Determinants",
-      width_ratio = 0.1,
-      themes = upset_default_themes(
-        default = theme(
-          panel.grid = element_blank(),
-          axis.text.x = element_text(angle = 90, hjust = 1)
-        ),
-        intersection_size = theme(
-          panel.background = element_rect(fill = "white"),
-          panel.grid.major.y = element_line(color = "grey90")
+# Create a plot for each Isolate Type
+for (type in isolate_types) {
+  subset_data <- data_converted %>%
+    filter(Isolate_type == type)
+  
+  # Create the plot
+  upset_plot <- upset(
+    subset_data,
+    intersect = resistance_classes,
+    name = "Resistance Determinants",
+    width_ratio = 0.1,
+    set_sizes = FALSE,
+    base_annotations = list(
+      'Frequency' = intersection_size(
+        aes(fill = as.factor(resistance_score))
+      ) +
+        scale_fill_manual(
+          name = "Resistance score",
+          values = c("0" = "#B2B09B", "1" = "mediumblue", "2" = "#43AA8B", "3" = "deeppink3")
         )
-      ),
-      set_sizes = FALSE,
-      base_annotations = list(
-        'Frequency' = intersection_size(
-          aes(fill = as.factor(`resistance_score`))
-        ) +
-          scale_fill_manual(name = "Resistance score", values = c("0" = "#B2B09B", "1" = "mediumblue", "2" = "#43AA8B", "3" = "deeppink3"))
+    ),
+    themes = upset_default_themes() +
+      theme(
+        panel.grid = element_blank(),
+        axis.text.x = element_text(angle = 90, hjust = 1),
+        axis.title.x = element_text(size = 12, face = "bold"),
+        legend.spacing = unit(5, "pt"),
+        plot.margin = margin(t = 5, r = 5, b = 5, l = 5),
+        panel.background = element_rect(fill = "white"),
+        panel.grid.major.y = element_line(color = "grey90")
       )
-    )
+  )
 
     # Save the plot
     file_name <- paste0("resistance_upset_", type, ".png")
