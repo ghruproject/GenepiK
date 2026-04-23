@@ -6,7 +6,14 @@ Date: 2025-09-19
 Author: Natacha Couto
 Maintainer: CGPS team <natacha.couto@cgps.group>
 Description: The GenepiK package analyses and plots data originated from the KLEBSurveys.
-Depends: R (>= 4.0.0)
+Depends: 
+  R (>= 4.0.0),
+  dplyr,
+  ggplot2,
+  ComplexUpset,
+  readr,
+  tidyr,
+  magick
 Imports:
   dplyr (>= 1.1.0),
   ggplot2 (== 3.5.2),
@@ -16,16 +23,9 @@ Imports:
   stats (>= 4.5.1),
   utils (>= 4.5.1),
   tidyr (>= 1.3.1),
-  magick(>= 2.9.0),
-  readr(>= 2.1.5),
+  magick (>= 2.9.0),
+  readr (>= 2.1.5),
   magrittr
-Depends:
-  dplyr,
-  ggplot2,
-  ComplexUpset,
-  readr,
-  tidyr,
-  magick
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
