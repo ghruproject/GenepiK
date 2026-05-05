@@ -32,12 +32,12 @@ The table includes **total number of strains per ST** (rows) and **total number 
 #import GenepiK
 library(GenepiK)
 
-import_data("~/git_repos/GenepiK/test_input/rapid_report_dummy_data.csv", "~/git_repos/")
+import_data("test_input/rapid_report_dummy_data.csv", "test_output")
 ```
 
 ```{r eval=FALSE, echo=TRUE, message=FALSE}
 #create plot
-create_ST_carb_gene_pivot(masterdata, "~/git_repos/GenepiK/test_output/")
+create_ST_carb_gene_pivot(masterdata, "test_output")
 ```
 
 # Output

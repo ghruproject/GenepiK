@@ -23,6 +23,6 @@ to the user about missing or unexpected columns.
 \examples{
 # Assuming 'data.csv' exists with the required columns
 # and the appropriate packages (readr, dplyr, stringr) are loaded.
-# check_columns_and_read(file_path = "data.csv", output_dir = "my_output_folder")
+# import_data(file_path = "data.csv", output_dir = "my_output_folder")
 
 }

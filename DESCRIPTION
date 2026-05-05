@@ -6,32 +6,28 @@ Date: 2025-09-19
 Author: Natacha Couto
 Maintainer: CGPS team <natacha.couto@cgps.group>
 Description: The GenepiK package analyses and plots data originated from the KLEBSurveys.
-Depends: R (>= 3.6.0)
+Depends: R (>= 4.1.0)
 Imports:
-  dplyr (>= 1.1.0),
-  ggplot2 (== 3.5.2),
   ComplexUpset (>= 1.3.3),
+  dplyr (>= 1.1.0),
+  forcats (>= 1.0.0),
+  ggplot2 (>= 3.5.0),
+  grDevices,
+  grid,
+  magrittr,
+  readr (>= 2.1.5),
+  scales (>= 1.3.0),
+  stats,
   stringr (>= 1.5.1),
-  grDevices (>= 4.5.1),
-  stats (>= 4.5.1),
-  utils (>= 4.5.1),
   tidyr (>= 1.3.1),
-  magick(>= 2.9.0),
-  readr(>= 2.1.5),
-  magrittr
-Depends:
-  dplyr,
-  ggplot2,
-  ComplexUpset,
-  readr,
-  tidyr,
-  magick
+  utils
 License: GPL (>= 3)
 Encoding: UTF-8
 LazyData: true
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Suggests: 
     knitr,
+    magick (>= 2.9.0),
     rmarkdown
 VignetteBuilder: knitr

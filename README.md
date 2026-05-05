@@ -34,20 +34,11 @@ Install the latest version of this package with:
 ```r
 install.packages("remotes") # if you haven't already
 
-#install specific version of ggplot2 needed
-remotes::install_version("ggplot2", version = "3.5.2")
-
-#install the GenepiK package
+# install the GenepiK package
 remotes::install_github("cgps-group/GenepiK")
 ```
 
 All required packages will be installed automatically.
-
-Do not update any of the packages if it asks. Selection option 3 to skip the updates.
-![alt text](https://github.com/cgps-group/GenepiK/blob/main/img/update.png?raw=true)
-
-
-It might be best to restart R before running the installation to prevent issues with running the examples below.
 
 ## Quick Usage Examples
 
@@ -61,21 +52,20 @@ library(GenepiK)
 # Example Klebsiella data
 
 # Import data
-import <- import_data("~/git_repos/GenepiK/test_input/rapid_report_dummy_data.csv", "~/git_repos/GenepiK/test_output/")
+import_data("test_input/rapid_report_dummy_data.csv", "test_output")
 
 # Analyse top 10 STs
-topN_ST_counts_csv(masterdata, "~/git_repos/GenepiK/test_output/", 10)
-create_ST_barplot(masterdata, "~/git_repos/GenepiK/test_output/")
+topN_ST_counts_csv(masterdata, "test_output", 10)
+create_ST_barplot(masterdata, "test_output", legend_size = 20)
 
-# Do upset plot of AMR/virulence scores and genes
-create_resistance_upset_plots(masterdata, "~/git_repos/GenepiK/test_output/")
-create_virulence_upset_plots(masterdata, "~/git_repos/GenepiK/test_output/")
+# Create upset plots of AMR and virulence determinants
+create_resistance_upset_plots(masterdata, "test_output", legend_size = 16)
+create_virulence_upset_plots(masterdata, "test_output", legend_size = 16)
 
 # Plot AST data based on 3 criteria
-create_ast_barplot(masterdata, "~/git_repos/GenepiK/test_output/")
-create_ast_barplots_gene(masterdata, "~/git_repos/GenepiK/test_output/")
-
-
+create_ast_barplots(masterdata, "test_output", legend_size = 20)
+create_ast_barplots_gene(masterdata, "test_output", legend_size = 20)
+create_ast_barplots_MIC(masterdata, "test_output", legend_size = 20)
 ```
 
 

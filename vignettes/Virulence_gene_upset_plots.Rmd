@@ -21,7 +21,7 @@ library(GenepiK)
 
 ##load the Data
 ```{r eval=FALSE, echo=TRUE, message=FALSE}
-import_data("~/git_repos/GenepiK/test_input/rapid_report_dummy_data.csv", "~/git_repos/")
+import_data("test_input/rapid_report_dummy_data.csv", "test_output")
 ```
 
 Required columns:
@@ -49,7 +49,7 @@ The create_virulence_upset_plots() function requires:
  
 ```{r pressure, eval=FALSE, echo=TRUE, message=FALSE}
 # Create the plots
-create_virulence_upset_plots(masterdata, "~/git_repos/GenepiK/test_output/")
+create_virulence_upset_plots(masterdata, "test_output", legend_size = 16)
 ```
 ### Gene upset Output
 This should produce a png files with `virulence_upset_CARBA-S.png` & `virulence_upset_CARBA-R.png`  

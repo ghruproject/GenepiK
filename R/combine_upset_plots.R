@@ -8,7 +8,6 @@
 #' @param output_dir A character string specifying the directory where the combined plot will be saved.
 #' @param plot_filenames A character vector of the names of the PNG files to be combined.
 #' @param output_filename A character string for the name of the final combined PNG file.
-#' @importFrom magick image_read image_append image_write
 #' @return The function does not return a value. It saves a single combined PNG file
 #'   in the specified output directory and prints a message upon completion.
 #'
@@ -30,6 +29,9 @@
 #' #   output_filename = "combined_upset_plot.png"
 #' # )
 combine_upset_plots <- function(plot_dir, output_dir, plot_filenames, output_filename) {
+  if (!requireNamespace("magick", quietly = TRUE)) {
+    stop("Package 'magick' is required for combine_upset_plots(). Please install it first.")
+  }
 
   # Ensure the output directory exists
   if (!dir.exists(output_dir)) {
@@ -44,22 +46,26 @@ combine_upset_plots <- function(plot_dir, output_dir, plot_filenames, output_fil
     missing_files <- plot_filenames[!file.exists(plot_paths)]
     stop("The following plot files were not found: ", paste(missing_files, collapse = ", "))
   }
+  
+  if (length(plot_paths) != 4) {
+    stop("combine_upset_plots() currently expects exactly 4 PNG files.")
+  }
 
   # Read the saved plots as magick objects
-  plot_images <- image_read(plot_paths)
+  plot_images <- magick::image_read(plot_paths)
 
   # Combine the images. We'll arrange them in a 2x2 grid.
   # First, append the first two horizontally.
-  row1 <- image_append(plot_images[1:2], stack = FALSE)
+  row1 <- magick::image_append(plot_images[1:2], stack = FALSE)
   # Then, append the next two horizontally.
-  row2 <- image_append(plot_images[3:4], stack = FALSE)
+  row2 <- magick::image_append(plot_images[3:4], stack = FALSE)
 
   # Finally, append the two rows vertically.
-  combined_plot <- image_append(c(row1, row2), stack = TRUE)
+  combined_plot <- magick::image_append(c(row1, row2), stack = TRUE)
 
   # Save the final combined plot
   output_path <- file.path(output_dir, output_filename)
-  image_write(combined_plot, path = output_path, format = "png")
+  magick::image_write(combined_plot, path = output_path, format = "png")
 
   message("✅ Combined plot saved to: ", output_path)
 }

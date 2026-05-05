@@ -27,12 +27,12 @@ library(GenepiK)
 
 ##load the Data
 ```{r eval=FALSE, echo=TRUE, message=FALSE}
-import_data("~/git_repos/GenepiK/test_input/rapid_report_dummy_data.csv", "~/git_repos/")
+import_data("test_input/rapid_report_dummy_data.csv", "test_output")
 ```
 
 ###Count Unique Carbapenem Gene Combinations
 ```{r eval=FALSE, echo=TRUE, message=FALSE}
-count_carb_gene_combinations_plot(masterdata, "~/git_repos/GenepiK/test_output/")
+count_carb_gene_combinations_plot(masterdata, "test_output", legend_size = 20)
 ```
 
 Example output:
@@ -53,4 +53,3 @@ This generates a png in the output folder: `carbapenem_gene_combinations_plot.pn
 ```{r echo=FALSE, fig.align='center', out.width='60%'}
 knitr::include_graphics("~/git_repos/GenepiK/test_output/carbapenem_gene_combinations_plot.png")
 ```
-

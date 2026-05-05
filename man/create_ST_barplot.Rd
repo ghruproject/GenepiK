@@ -4,16 +4,15 @@
 \alias{create_ST_barplot}
 \title{Create a Stacked Barplot of ST Distribution}
 \usage{
-create_ST_barplot(file_path, output_dir)
+create_ST_barplot(masterdata, output_dir, legend_size)
 }
 \arguments{
-\item{file_path}{A character string specifying the path to the CSV file to be read.
-This parameter is not currently used within the function body as written,
-which operates on a globally assigned 'masterdata' object. For a reusable
-package, it's recommended to modify the function to accept 'masterdata' as an
-argument directly.}
+\item{masterdata}{A data frame containing at least \code{ghru_id}, \code{Isolate_type},
+\code{ST}, and \code{Bla_Carb_acquired}.}
 
 \item{output_dir}{A character string specifying the directory where the plot will be saved.}
+
+\item{legend_size}{A numeric variable specifying the size of the axis text.}
 }
 \value{
 The function does not return a value. It prints a ggplot object to a PNG file
@@ -26,5 +25,5 @@ presence or absence of carbapenemase genes. The plot is saved as a PNG file.
 }
 \examples{
 # Assuming 'masterdata' is a data frame loaded in the environment
-# ST_barplot(file_path = "data.csv", output_dir = "plots")
+# ST_barplot(masterdata = my_data, output_dir = "plots",legend_size= 20) 
 }
