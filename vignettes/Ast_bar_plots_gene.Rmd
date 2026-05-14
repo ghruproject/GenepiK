@@ -36,12 +36,12 @@ The plots are **faceted by carbapenem resistance status**, which is inferred fro
 #import GenepiK
 library(GenepiK)
 
-import_data("~/git_repos/GenepiK/test_input/rapid_report_dummy_data.csv", "~/git_repos/")
+import_data("test_input/rapid_report_dummy_data.csv", "test_output")
 ```
 
 ```{r eval=FALSE, echo=TRUE, message=FALSE}
 #create plot
-create_ast_barplots_gene(masterdata, "~/git_repos/GenepiK/test_output/")
+create_ast_barplots_gene(masterdata, "test_output", legend_size = 20)
 ```
 
 ### AST Barplot Output

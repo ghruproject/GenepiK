@@ -4,7 +4,12 @@
 \alias{create_virulence_upset_plots}
 \title{Create Upset Plots for Virulence Factors, Faceted by Isolate Type}
 \usage{
-create_virulence_upset_plots(data, output_dir)
+create_virulence_upset_plots(
+  data,
+  output_dir,
+  legend_size = 12,
+  label_size = legend_size
+)
 }
 \arguments{
 \item{data}{A data frame containing the data. It must include the columns
@@ -12,6 +17,11 @@ create_virulence_upset_plots(data, output_dir)
 within the function (\code{Yersiniabactin}, \code{Colibactin}, etc.).}
 
 \item{output_dir}{A character string specifying the directory where the plots will be saved.}
+
+\item{legend_size}{A numeric value controlling the text size across the plot.}
+
+\item{label_size}{An optional numeric value controlling the axis and set label
+text size separately. Defaults to \code{legend_size}.}
 }
 \value{
 The function does not return a value. It creates one or more PNG files
@@ -24,5 +34,5 @@ co-occurrence of virulence factors and colors the intersections by
 \code{virulence_score}. The plots are saved as PNG files.
 }
 \examples{
-# create_virulence_upset_plots(data = my_data, output_dir = "plots")
+# create_virulence_upset_plots(data = my_data, output_dir = "plots", legend_size = 12)
 }

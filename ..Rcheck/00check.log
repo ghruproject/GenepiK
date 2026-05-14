@@ -1,0 +1,207 @@
+* using log directory ‘/Users/Guest_Aanensen/Documents/GitHub/GenepiK/..Rcheck’
+* using R version 4.5.1 (2025-06-13)
+* using platform: aarch64-apple-darwin20
+* R was compiled by
+    Apple clang version 16.0.0 (clang-1600.0.26.6)
+    GNU Fortran (GCC) 14.2.0
+* running under: macOS Sequoia 15.7.4
+* using session charset: UTF-8
+* checking for file ‘./DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘GenepiK’ version ‘0.1.0’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... INFO
+Package suggested but not available for checking: ‘magick’
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... NOTE
+Found the following hidden files and directories:
+  .DS_Store
+  .gitignore
+  img/.DS_Store
+  test_input/.DS_Store
+  test_output/.DS_Store
+  vignettes/.DS_Store
+  ..Rcheck
+  .git
+  .github
+These were most likely included in error. See section ‘Package
+structure’ in the ‘Writing R Extensions’ manual.
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘GenepiK’ can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking DESCRIPTION meta-information ... NOTE
+Checking should be performed on sources prepared by ‘R CMD build’.
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... WARNING
+Found the following directory with the name of a check directory:
+  ./..Rcheck
+Most likely, these were included erroneously.
+* checking code files for non-ASCII characters ... WARNING
+Found the following files with non-ASCII characters:
+  R/combine_upset_plots.R
+  R/count_carbapenem_genes.R
+  R/create_ast_barplots_gene.R
+  R/create_ast_barplots_MIC.R
+  R/create_ast_barplots.R
+  R/create_ast_pivot.R
+  R/create_resistance_upset.R
+  R/create_sentinel_table.R
+  R/create_virulence_upset.R
+  R/import.R
+  R/pivot_table_st_carb.R
+  R/top_st_counts.R
+Portable packages must use only ASCII characters in their R code and
+NAMESPACE directives, except perhaps in comments.
+Use \uxxxx escapes for other characters.
+Function ‘tools::showNonASCIIfile’ can help in finding non-ASCII
+characters in files.
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking dependencies in R code ... NOTE
+Namespaces in Imports field not imported from:
+  ‘magrittr’ ‘stats’ ‘utils’
+  All declared Imports should be used.
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... NOTE
+count_carb_gene_combinations_plot: no visible global function
+  definition for ‘write.csv’
+count_carb_gene_combinations_plot: no visible global function
+  definition for ‘reorder’
+count_carb_gene_combinations_plot: no visible binding for global
+  variable ‘Gene_Combination’
+count_carb_gene_combinations_plot: no visible binding for global
+  variable ‘Count’
+create_ast_barplots: no visible binding for global variable ‘AMK’
+create_ast_barplots: no visible binding for global variable ‘SXT’
+create_ast_barplots: no visible binding for global variable
+  ‘Antimicrobial’
+create_ast_barplots: no visible binding for global variable
+  ‘Interpretation’
+create_ast_barplots_gene: no visible binding for global variable ‘AMK’
+create_ast_barplots_gene: no visible binding for global variable ‘SXT’
+create_ast_barplots_gene: no visible binding for global variable
+  ‘Antimicrobial’
+create_ast_barplots_gene: no visible binding for global variable
+  ‘Interpretation’
+create_ast_barplots_MIC: no visible binding for global variable ‘AMK’
+create_ast_barplots_MIC: no visible binding for global variable ‘SXT’
+create_ast_barplots_MIC: no visible binding for global variable
+  ‘Antimicrobial’
+create_ast_barplots_MIC: no visible binding for global variable
+  ‘Interpretation’
+create_ast_pivot: no visible binding for global variable ‘AMK’
+create_ast_pivot: no visible binding for global variable ‘SXT’
+create_ast_pivot: no visible binding for global variable ‘Isolate_type’
+create_ast_pivot: no visible binding for global variable
+  ‘Antimicrobial’
+create_ast_pivot: no visible binding for global variable
+  ‘Interpretation’
+create_ast_pivot: no visible binding for global variable ‘n’
+create_ast_pivot: no visible global function definition for ‘where’
+create_ast_pivot: no visible global function definition for ‘write.csv’
+create_resistance_upset_plots: no visible binding for global variable
+  ‘.data’
+create_sentinel_table: no visible binding for global variable
+  ‘Laboratory_Name’
+create_sentinel_table: no visible binding for global variable
+  ‘Isolate_type’
+create_sentinel_table: no visible binding for global variable ‘n’
+create_sentinel_table: no visible global function definition for
+  ‘where’
+create_sentinel_table: no visible global function definition for
+  ‘write.csv’
+create_ST_barplot: no visible binding for global variable ‘ST’
+create_ST_barplot: no visible binding for global variable
+  ‘Isolate_type’
+create_ST_barplot: no visible binding for global variable
+  ‘carba_presence’
+create_ST_carb_gene_pivot: no visible binding for global variable ‘ST’
+create_ST_carb_gene_pivot: no visible binding for global variable
+  ‘Bla_Carb_acquired’
+create_ST_carb_gene_pivot: no visible binding for global variable ‘n’
+create_ST_carb_gene_pivot: no visible global function definition for
+  ‘where’
+create_ST_carb_gene_pivot: no visible binding for global variable
+  ‘Isolate_type’
+create_ST_carb_gene_pivot: no visible global function definition for
+  ‘write.csv’
+create_virulence_upset_plots: no visible binding for global variable
+  ‘.data’
+topN_ST_counts_csv: no visible binding for global variable ‘ST’
+topN_ST_counts_csv: no visible binding for global variable ‘Number’
+topN_ST_counts_csv: no visible global function definition for
+  ‘write.csv’
+Undefined global functions or variables:
+  .data AMK Antimicrobial Bla_Carb_acquired carba_presence Count
+  Gene_Combination Interpretation Isolate_type Laboratory_Name n Number
+  reorder ST SXT where write.csv
+Consider adding
+  importFrom("stats", "reorder")
+  importFrom("utils", "write.csv")
+to your NAMESPACE file.
+* checking Rd files ... OK
+* checking Rd metadata ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking LazyData ... INFO
+  'LazyData' is specified without a 'data' directory
+* checking files in ‘vignettes’ ... WARNING
+Files in the 'vignettes' directory but no files in 'inst/doc':
+  ‘Ast_bar_plots_gene.html’ ‘Ast_bar_plots_gene.Rmd’
+  ‘AST_per_Isolate_type.html’ ‘AST_per_Isolate_type.Rmd’
+  ‘Carbapenem_Gene_Count.html’ ‘Carbapenem_Gene_Count.Rmd’
+  ‘Combine_upset_plots.html’ ‘Combine_upset_plots.Rmd’
+  ‘Import_Data.html’ ‘Import_Data.Rmd’
+  ‘Resistance_gene_upset_plots.html’ ‘Resistance_gene_upset_plots.Rmd’
+  ‘ST_cab_pivot.html’ ‘ST_cab_pivot.Rmd’ ‘ST_carb_res_plots.html’
+  ‘ST_carb_res_plots.Rmd’ ‘Top_N_ST_summary.html’
+  ‘Top_N_ST_summary.Rmd’ ‘Virulence_gene_upset_plots.html’
+  ‘Virulence_gene_upset_plots.Rmd’
+* checking examples ... ERROR
+Running examples in ‘GenepiK-Ex.R’ failed
+The error most likely occurred in:
+
+> ### Name: count_carb_gene_combinations_plot
+> ### Title: Count Carbapenem Gene Combinations and Plot
+> ### Aliases: count_carb_gene_combinations_plot
+> 
+> ### ** Examples
+> 
+> count_carb_gene_combinations_plot(masterdata, "~/git_repos/GenepiK/test_output/", legend_size= 20)
+Error: object 'masterdata' not found
+Execution halted
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes ... WARNING
+Directory 'inst/doc' does not exist.
+Package vignettes without corresponding single PDF/HTML:
+  ‘Ast_bar_plots_gene.Rmd’
+  ‘AST_per_Isolate_type.Rmd’
+  ‘Carbapenem_Gene_Count.Rmd’
+  ‘Combine_upset_plots.Rmd’
+  ‘Import_Data.Rmd’
+  ‘Resistance_gene_upset_plots.Rmd’
+  ‘ST_cab_pivot.Rmd’
+  ‘ST_carb_res_plots.Rmd’
+  ‘Top_N_ST_summary.Rmd’
+  ‘Virulence_gene_upset_plots.Rmd’
+* checking re-building of vignette outputs ... OK
+* checking PDF version of manual ... OK
+* DONE
+Status: 1 ERROR, 4 WARNINGs, 4 NOTEs

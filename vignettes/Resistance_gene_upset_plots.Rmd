@@ -23,7 +23,7 @@ library(GenepiK)
 
 ##load the Data
 ```{r eval=FALSE, echo=TRUE, message=FALSE}
-import_data("~/git_repos/GenepiK/test_input/rapid_report_dummy_data.csv", "~/git_repos/")
+import_data("test_input/rapid_report_dummy_data.csv", "test_output")
 ```
 
 ## The dataset must include:
@@ -56,7 +56,7 @@ The create_resistance_upset_plots() function requires:
 ```{r pressure, eval=FALSE, echo=TRUE, message=FALSE}
 
 # Create the plots
-create_resistance_upset_plots(masterdata, "~/git_repos/GenepiK/test_output/")
+create_resistance_upset_plots(masterdata, "test_output", legend_size = 16)
 ```
 
 ### Gene upset Output
@@ -66,4 +66,3 @@ which looks like below in your output folder
 ```{r echo=FALSE, fig.align='center', out.width='60%'}
 knitr::include_graphics("~/git_repos/GenepiK/test_output/resistance_upset_CARBA-S.png")
 knitr::include_graphics("~/git_repos/GenepiK/test_output/resistance_upset_CARBA-R.png")
-

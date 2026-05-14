@@ -19,7 +19,7 @@ install.packages("devtools", repos = "https://cloud.r-project.org")
 
 Then install GenepiK from the GitHub repository:
 ```{r install-GenepiK, eval=FALSE, echo=TRUE, message=FALSE}
-devtools::install_git("https://github.com/cgps-group/GenepiK.git")
+remotes::install_github("cgps-group/GenepiK")
 ```
 
 Finally, load the package:
@@ -69,9 +69,8 @@ Importing data
 ```{r eval=FALSE, echo=TRUE, message=FALSE}
 # Define input and output directory
 # Import the data
-import_data("~/git_repos/GenepiK/test_input/rapid_report_dummy_data.csv", "~/git_repos/GenepiK/test_output/")
+import_data("test_input/rapid_report_dummy_data.csv", "test_output")
 
 # Preview the data
 head(masterdata)
 ```
-

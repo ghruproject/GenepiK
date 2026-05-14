@@ -38,7 +38,7 @@ plot_files <- c(
 
 ```{r eval=FALSE, echo=TRUE, message=FALSE}
 #create plot
-combine_upset_plots("~/git_repos/GenepiK/test_output/", "~/git_repos/GenepiK/test_output/", plot_files, "combined_upset_plots.png")
+combine_upset_plots("test_output", "test_output", plot_files, "combined_upset_plots.png")
 ```
 
 ### Output

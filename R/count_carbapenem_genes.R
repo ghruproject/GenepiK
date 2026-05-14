@@ -9,8 +9,6 @@
 #' @param output_dir A character string specifying the directory to save the CSV and plot.
 #' @param legend_size A number specifying the size of the legend. 
 #' @return Invisibly returns a data frame with columns: Gene_Combination, Count, Percentage.
-#' @importFrom ggplot2 ggplot aes geom_bar scale_y_continuous scale_fill_manual labs theme element_text
-#' @importFrom grDevices png dev.off
 #' @export
 #'
 #' @examples
@@ -76,56 +74,55 @@ count_carb_gene_combinations_plot <- function(masterdata, output_dir,legend_size
   
   # Create bar plot overal
   output_png <- file.path(output_dir, "carbapenem_gene_combinations_plot.png")
-  png(filename = output_png, height = 8, width = 12, res = 300, units = "in")
+  grDevices::png(filename = output_png, height = 8, width = 12, res = 300, units = "in")
   
   # Explicitly print the ggplot object
   print(
-    ggplot(combo_counts, aes(x = reorder(Gene_Combination, -Count), y = Count, fill = Gene_Combination)) +
-      geom_bar(stat = "identity") +
-      labs(x = "", y = "Number of Isolates", fill = "Gene Combination") +
-      theme(text = element_text(size = legend_size),
-            axis.text.x = element_text(angle = 45, hjust = 1))+
-      theme(legend.position="none")
+    ggplot2::ggplot(combo_counts, ggplot2::aes(x = reorder(Gene_Combination, -Count), y = Count, fill = Gene_Combination)) +
+      ggplot2::geom_bar(stat = "identity") +
+      ggplot2::labs(x = "", y = "Number of Isolates", fill = "Gene Combination") +
+      ggplot2::theme(text = ggplot2::element_text(size = legend_size),
+            axis.text.x = ggplot2::element_text(angle = 45, hjust = 1)) +
+      ggplot2::theme(legend.position = "none")
     
   )
-  dev.off()
+  grDevices::dev.off()
   message("✅ Carbapenem gene combination plot saved to: ", output_png)
   
   
   # Create bar plot carba-R
   output_png_carba_r <- file.path(output_dir, "carbapenem_gene_combinations_plot_carba_r.png")
-  png(filename = output_png_carba_r, height = 8, width = 12, res = 300, units = "in")
+  grDevices::png(filename = output_png_carba_r, height = 8, width = 12, res = 300, units = "in")
   
   # Explicitly print the ggplot object
   print(
-    ggplot(combo_counts_carba_r, aes(x = reorder(Gene_Combination, -Count), y = Count, fill = Gene_Combination)) +
-      geom_bar(stat = "identity") +
-      labs(x = "", y = "Number of Isolates", fill = "Gene Combination") +
-      theme(text = element_text(size = legend_size),
-            axis.text.x = element_text(angle = 45, hjust = 1))+
-      theme(legend.position="none")
+    ggplot2::ggplot(combo_counts_carba_r, ggplot2::aes(x = reorder(Gene_Combination, -Count), y = Count, fill = Gene_Combination)) +
+      ggplot2::geom_bar(stat = "identity") +
+      ggplot2::labs(x = "", y = "Number of Isolates", fill = "Gene Combination") +
+      ggplot2::theme(text = ggplot2::element_text(size = legend_size),
+            axis.text.x = ggplot2::element_text(angle = 45, hjust = 1)) +
+      ggplot2::theme(legend.position = "none")
     
   )
-  dev.off()
-  message("✅ Carbapenem-resistance carbapenem gene combination plot saved to: ", output_png)
+  grDevices::dev.off()
+  message("✅ Carbapenem-resistant carbapenem gene combination plot saved to: ", output_png_carba_r)
   
   # Create bar plot carba-S
   output_png_carba_s <- file.path(output_dir, "carbapenem_gene_combinations_plot_carba_s.png")
-  png(filename = output_png_carba_s, height = 8, width = 12, res = 300, units = "in")
+  grDevices::png(filename = output_png_carba_s, height = 8, width = 12, res = 300, units = "in")
   
   # Explicitly print the ggplot object
   print(
-    ggplot(combo_counts_carba_s, aes(x = reorder(Gene_Combination, -Count), y = Count, fill = Gene_Combination)) +
-      geom_bar(stat = "identity") +
-      labs(x = "", y = "Number of Isolates", fill = "Gene Combination") +
-      theme(text = element_text(size = legend_size),
-            axis.text.x = element_text(angle = 45, hjust = 1))+
-      theme(legend.position="none")
+    ggplot2::ggplot(combo_counts_carba_s, ggplot2::aes(x = reorder(Gene_Combination, -Count), y = Count, fill = Gene_Combination)) +
+      ggplot2::geom_bar(stat = "identity") +
+      ggplot2::labs(x = "", y = "Number of Isolates", fill = "Gene Combination") +
+      ggplot2::theme(text = ggplot2::element_text(size = legend_size),
+            axis.text.x = ggplot2::element_text(angle = 45, hjust = 1)) +
+      ggplot2::theme(legend.position = "none")
     
   )
-  dev.off()
-  message("✅ Carbapenem-resistance carbapenem gene combination plot saved to: ", output_png)
+  grDevices::dev.off()
+  message("✅ Carbapenem-susceptible carbapenem gene combination plot saved to: ", output_png_carba_s)
   
   invisible(combo_counts)
 }
-

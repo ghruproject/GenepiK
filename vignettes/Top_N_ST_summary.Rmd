@@ -28,12 +28,12 @@ library(GenepiK)
 
 ##load the Data
 ```{r eval=FALSE, echo=TRUE, message=FALSE}
-import_data("~/git_repos/GenepiK/test_input/rapid_report_dummy_data.csv", "~/git_repos/")
+import_data("test_input/rapid_report_dummy_data.csv", "test_output")
 ```
 
 ## Count the top N STs and their percentages
 ```{r eval=FALSE, echo=TRUE, message=FALSE}
-topN_ST_counts_csv(masterdata, "~/git_repos/GenepiK/test_output/", 10)
+topN_ST_counts_csv(masterdata, "test_output", 10)
 ```
 
 This should create a csv file with the top N STs in the output folder: `top10_ST_counts.csv`
@@ -61,4 +61,3 @@ This should create a csv file with the top N STs in the output folder: `top10_ST
 - **Identify the most prevalent sequence types in your dataset.**
 - **Calculate counts and percentages.**
 - **Save the results for reporting or further analysis.**
-
