@@ -1,0 +1,26 @@
+combine_upset_plots     Combine Multiple Upset Plots into a Single
+                        Image
+count_carb_gene_combinations_plot
+                        Count Carbapenem Gene Combinations and Plot
+create_ast_barplots     Create Barplots of Antimicrobial Susceptibility
+                        Testing (AST) by Isolate Type
+create_ast_barplots_gene
+                        Create Barplots of AST by Carbapenem Resistance
+                        (Gene)
+create_ast_barplots_MIC
+                        Create Barplots of AST by Carbapenem Resistance
+                        (MIC)
+create_ast_pivot        Create Pivot tables of Antimicrobial
+                        Susceptibility Testing (AST) by Isolate Type
+create_resistance_upset_plots
+                        Create Upset Plots for Resistance Determinants,
+                        Faceted by Isolate Type
+create_sentinel_table   Create Pivot Table of ST vs Carbapenem Genes
+create_ST_barplot       Create a Stacked Barplot of ST Distribution
+create_ST_carb_gene_pivot
+                        Create Pivot Table of ST vs Carbapenem Genes
+create_virulence_upset_plots
+                        Create Upset Plots for Virulence Factors,
+                        Faceted by Isolate Type
+import_data             Check Columns and Read CSV Data
+topN_ST_counts_csv      Create a table os top n ST Distribution

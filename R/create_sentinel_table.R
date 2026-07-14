@@ -18,6 +18,9 @@
 #' 
 
 create_sentinel_table<- function(masterdata, output_dir) {
+  if (!"Laboratory_Name" %in% colnames(masterdata)) {
+    stop("masterdata must contain a column named 'Laboratory_Name'")
+  }
   
   # 1. Subset relevant columns
   
@@ -29,14 +32,14 @@ create_sentinel_table<- function(masterdata, output_dir) {
   
   plot_sentinel_isolate_table <- file.path(output_dir, "hospital_summary.csv")
   
-  hospital_summary <- hospital_data %>%
-    count(Laboratory_Name, Isolate_type) %>%
-    pivot_wider(
+  hospital_summary <- hospital_data |>
+    dplyr::count(Laboratory_Name, Isolate_type) |>
+    tidyr::pivot_wider(
       names_from = Isolate_type,
       values_from = n,
       values_fill = 0
-    ) %>%
-    mutate(Total = rowSums(across(where(is.numeric))))
+    ) |>
+    dplyr::mutate(Total = rowSums(dplyr::across(where(is.numeric))))
   
   write.csv(hospital_summary, file = plot_sentinel_isolate_table  , row.names = FALSE)
   message("✅ Summary of isolates submitted by sentinel table saved to: ", plot_sentinel_isolate_table )

@@ -9,8 +9,6 @@
 #' @param output_dir A character string specifying the directory where the plot will be saved.
 #' @return Invisibly returns a data frame with ST as rows and carbapenem genes as columns,
 #'         including row and column totals.
-#' @importFrom dplyr count mutate summarise across bind_rows
-#' @importFrom tidyr pivot_wider
 #' @export
 #'
 #' @examples
@@ -27,8 +25,8 @@ create_ast_pivot <- function(masterdata, output_dir) {
   )]
   
   # 2. Pivot from wide to long format
-  AST_data_long <- AST_data %>%
-    pivot_longer(
+  AST_data_long <- tidyr::pivot_longer(
+    AST_data,
       cols = AMK:SXT,
       names_to = "Antimicrobial",
       values_to = "Interpretation"
@@ -44,30 +42,30 @@ create_ast_pivot <- function(masterdata, output_dir) {
   
   plot_path_table_carba_r <- file.path(output_dir, "clinical_ast_table_carba_r.csv")
   
-  pivot_AST_carba_r <- AST_data_long %>%
-    filter(Isolate_type== "CARBA-R") %>%
-    count(Antimicrobial, Interpretation) %>%
-    pivot_wider(
+  pivot_AST_carba_r <- AST_data_long |>
+    dplyr::filter(Isolate_type == "CARBA-R") |>
+    dplyr::count(Antimicrobial, Interpretation) |>
+    tidyr::pivot_wider(
       names_from = Interpretation,
       values_from = n,
       values_fill = 0
-    ) %>%
-    mutate(Total = rowSums(across(where(is.numeric))))
+    ) |>
+    dplyr::mutate(Total = rowSums(dplyr::across(where(is.numeric))))
   
   write.csv(pivot_AST_carba_r, file = plot_path_table_carba_r  , row.names = FALSE)
   message("✅ Carbapenem-resistant pivot table saved to: ", plot_path_table_carba_r )
   
   plot_path_table_carba_s <- file.path(output_dir, "clinical_ast_table_carba_s.csv")
   
-  pivot_AST_carba_s <- AST_data_long %>%
-    filter(Isolate_type== "CARBA-S") %>%
-    count(Antimicrobial, Interpretation) %>%
-    pivot_wider(
+  pivot_AST_carba_s <- AST_data_long |>
+    dplyr::filter(Isolate_type == "CARBA-S") |>
+    dplyr::count(Antimicrobial, Interpretation) |>
+    tidyr::pivot_wider(
       names_from = Interpretation,
       values_from = n,
       values_fill = 0
-    ) %>%
-    mutate(Total = rowSums(across(where(is.numeric))))
+    ) |>
+    dplyr::mutate(Total = rowSums(dplyr::across(where(is.numeric))))
   
   write.csv(pivot_AST_carba_s, file = plot_path_table_carba_s  , row.names = FALSE)
   message("✅ Carbapenem-susceptible pivot table saved to: ", plot_path_table_carba_s )

@@ -7,14 +7,7 @@
 #' @param masterdata A data frame containing the AST data. It must include the columns
 #'   'ghru_id', 'Isolate_type', and the specified antimicrobial columns.
 #' @param output_dir A character string specifying the directory where the plot will be saved.
-#' @param legend_size A numeric variable specifying the size of the axis text.
 #' @param legend_size A number specifying the size of the legend. 
-#' @importFrom dplyr %>% count pull filter
-#' @importFrom tidyr pivot_longer
-#' @importFrom ggplot2 ggplot aes geom_bar scale_y_continuous scale_fill_manual labs facet_wrap theme element_text
-#' @importFrom grDevices png dev.off
-#' @importFrom utils file.exists
-#' @importFrom stats filter
 #' @return The function does not return a value. It prints a ggplot object to a PNG file
 #'   and provides a message confirming the save location.
 #'
@@ -33,8 +26,8 @@ create_ast_barplots <- function(masterdata, output_dir, legend_size) {
   )]
   
   # 2. Pivot from wide to long format
-  AST_data_long <- AST_data %>%
-    pivot_longer(
+  AST_data_long <- tidyr::pivot_longer(
+    AST_data,
       cols = AMK:SXT,
       names_to = "Antimicrobial",
       values_to = "Interpretation"
@@ -48,23 +41,23 @@ create_ast_barplots <- function(masterdata, output_dir, legend_size) {
   
   # 4. Plot and save to PNG
   plot_path <- file.path(output_dir, "ast_barplots_clinical_facet.png")
-  png(filename = plot_path, height = 12, width = 12, res = 350, units = "in")
+  grDevices::png(filename = plot_path, height = 12, width = 12, res = 350, units = "in")
   
   print(
-    ggplot(AST_data_long, aes(x = Antimicrobial, fill = Interpretation)) +
-      geom_bar(position = "fill") +
-      scale_y_continuous(labels = scales::percent_format()) +
-      scale_fill_manual(values = c(
+    ggplot2::ggplot(AST_data_long, ggplot2::aes(x = Antimicrobial, fill = Interpretation)) +
+      ggplot2::geom_bar(position = "fill") +
+      ggplot2::scale_y_continuous(labels = scales::percent_format()) +
+      ggplot2::scale_fill_manual(values = c(
         "R" = '#BC4B51',
         "I" = "#F4A259",
         "S" = "#8CB369"
       )) +
-      labs(y = "Proportion") +
-      theme(text = element_text(size = legend_size))+
-      facet_wrap(~Isolate_type, ncol = 1)
+      ggplot2::labs(y = "Proportion") +
+      ggplot2::theme(text = ggplot2::element_text(size = legend_size)) +
+      ggplot2::facet_wrap(~Isolate_type, ncol = 1)
   )
   
-  dev.off()
+  grDevices::dev.off()
   message("✅ AST barplot saved to: ", plot_path)
   
   }

@@ -4,13 +4,15 @@
 \alias{create_ast_barplots_gene}
 \title{Create Barplots of AST by Carbapenem Resistance (Gene)}
 \usage{
-create_ast_barplots_gene(masterdata, output_dir)
+create_ast_barplots_gene(masterdata, output_dir, legend_size)
 }
 \arguments{
 \item{masterdata}{A data frame containing the AST data. It must include
 the columns 'ghru_id', 'Bla_Carb_acquired', and other specified antimicrobial columns.}
 
 \item{output_dir}{A character string specifying the directory where the plot will be saved.}
+
+\item{legend_size}{A numeric value controlling the text size across the plot.}
 }
 \value{
 The function does not return a value. It prints a ggplot object to a PNG file
@@ -24,5 +26,5 @@ The plot is saved as a PNG file.
 }
 \examples{
 # Assuming 'masterdata' is a data frame loaded in the environment
-# create_ast_barplots_gene(masterdata = my_data, output_dir = "plots")
+# create_ast_barplots_gene(masterdata = my_data, output_dir = "plots", legend_size = 20)
 }

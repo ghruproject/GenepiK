@@ -22,7 +22,7 @@ library(GenepiK)
 
 ##load the Data
 ```{r eval=FALSE, echo=TRUE, message=FALSE}
-import_data("~/git_repos/GenepiK/test_input/rapid_report_dummy_data.csv", "~/git_repos/")
+import_data("test_input/rapid_report_dummy_data.csv", "test_output")
 ```
 
 Required columns:
@@ -33,7 +33,7 @@ Required columns:
 
 ### plot the data
 ```{r eval=FALSE, echo=TRUE, message=FALSE}
-create_ST_barplot(masterdata, "~/git_repos/GenepiK/test_output/")
+create_ST_barplot(masterdata, "test_output", legend_size = 20)
 ```
 
 ## Including Plots
@@ -42,4 +42,3 @@ This generates a PNG file: `ST_distribution.png` in your output folder
 ```{r echo=FALSE, fig.align='center', out.width='60%'}
 knitr::include_graphics("~/git_repos/GenepiK/test_output/ST_distribution.png")
 ```
-
